@@ -1,0 +1,21 @@
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+export type Livro = {
+  id: string;
+  titulo: string;
+  autor: string;
+  genero: string | null;
+  ano_publicacao: number | null;
+  numero_paginas: number | null;
+  editora: string | null;
+  avaliacao: number | null;
+  resenha: string | null;
+  criado_em: string;
+};
+
+export type LivroInput = Omit<Livro, 'id' | 'criado_em'>;
